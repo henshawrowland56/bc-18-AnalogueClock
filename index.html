@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Analogue clock</title>
+	<title>Analog clock</title>
 	<link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -18,14 +18,14 @@
                     <input onclick="yellow()" style="background:#ffd800"  class="picker-btn" type="button" />
                     <input onclick="brown()" style="background:#ce5e14"  class="picker-btn" type="button" />
                     <input onclick="red()" style="background:#f00"  class="picker-btn" type="button" />
-                    <input onclick="white" style="background:#cef5eb"  class="picker-btn" type="button" />
+                    <input onclick="white()" style="background:#cef5eb"  class="picker-btn" type="button" />
                 </div>
             </div>
         </div>
 
         <!--Country list div-->
         <div style="float:left">
-	        <h1 class="header">**ANALOGUE CLOCK**</h1>
+	        <h1 class="header">**ANALOG CLOCK**</h1>
 		    <div class="wrapper">
 			<div class="clock-div">
 				<div class="clock">
@@ -55,7 +55,7 @@
 				<button class="btn" id="btnReverse"onclick="refresh()"><a href="index.html"><i class="fa fa-clock-o" aria-hidden="true"></i></a></button>
                 <div class="clear"></div>
                 <div>
-			        <table id ="outputTab">
+			        <table id ="outputTab"style="color:#cef5eb">
                         <tr>
                             <th class="ct">Zones   <i class="fa fa-arrows-h" aria-hidden="true"></i></th>
                             <th><i class="fa fa-arrows-h" aria-hidden="true"></i></th>
@@ -108,7 +108,8 @@
 		</div><!--canvas div-->
             <div></div><!--color picker div-->
         </div>
-        <div style="float:left;width:600px; margin:7.5px">
+       
+        <div style="float:left;width:450px; margin:7.5px">
             <h1 style="text-align:center">CITIES IN DIFFERENT ZONES</h1>
             <div style="float:left">
                 <ul style="margin:5px 20px 5px 20px;">
