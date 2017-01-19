@@ -39,11 +39,11 @@ function returnTimeZoneOffset(value) {
         case 4: return timeZoneOffsets.EDT;
         case 5: return timeZoneOffsets.Fiji;
         case 6: return timeZoneOffsets.GMT;
-        case 6: return timeZoneOffsets.Norfolk;
-        case 7: return timeZoneOffsets.Nepal;
-        case 8: return timeZoneOffsets.Pyongyang;
-        case 9: return timeZoneOffsets.WestSamoa;
-        case 10: return timeZoneOffsets.WAST;
+        case 7: return timeZoneOffsets.Norfolk;
+        case 8: return timeZoneOffsets.Nepal;
+        case 9: return timeZoneOffsets.Pyongyang;
+        case 10: return timeZoneOffsets.WestSamoa;
+        case 11: return timeZoneOffsets.WAST;
     }
 } 
 function check() {
@@ -96,7 +96,7 @@ function generateTime() {
     curTimeElem.innerHTML = toTime(testDate.toTimeString());
     zoneDateElem.innerHTML = finalDate.toDateString();
     curDateElem.innerHTML = testDate.toDateString();
-    offsetElem.innerHTML = timeZone===0 ? "In your time zone" :offset > 1 ? Math.abs(offset-1) + " hours behind your zone" : "+" + (offset+1) + " hours ahead of your zone";
+    offsetElem.innerHTML = timeZoneOffsets.WAT[0]===tZoneoffset[0] ? "In your time zone" :offset < 1 ? Math.abs(offset-1) + " hour(s) behind" :  Math.floor(offset-1) +" hour(s) "+(60 *(offset - Math.floor(offset))) +" mins  ahead";
 
     showClock(finalDate);
 }
