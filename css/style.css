@@ -5,7 +5,6 @@
 }
 .clear{
     clear:both;
-    overflow:hidden;
 }
 holder{
     width:1800px;
@@ -130,11 +129,13 @@ canvas{
 {
     background-image:url("../images/img3.png");
     background-repeat:repeat;
+    color:#cef5eb;
 }
 .body-silver
 {
     background-image:url("../images/img1.png");
     background-repeat:repeat;
+    color:#cef5eb;
 }
 .body-yellow
 {
