@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Analogue clock</title>
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="body-blue" id="bodyId">
+    <div class="holder">
+        <div style="float:left; background-color:black;width:450px; margin:7.5px"><!--color picker div-->
+            <div class="color-picker">
+                <h3 style="color:sienna">#COLOR PICKER</h3>
+                <div >
+                    <input onclick="blue()" style="background:#08174a"  class="picker-btn" type="button" />
+                    <input onclick="green()" style="background:#31940a" class="picker-btn" type="button" />
+                    <input onclick="silver()" style="background:#808080"  class="picker-btn" type="button" />
+                    <input onclick="yellow()" style="background:#ffd800"  class="picker-btn" type="button" />
+                    <input onclick="brown()" style="background:#ce5e14"  class="picker-btn" type="button" />
+                    <input onclick="red()" style="background:#f00"  class="picker-btn" type="button" />
+                    <input onclick="white" style="background:#cef5eb"  class="picker-btn" type="button" />
+                </div>
+            </div>
+        </div>
+
+        <!--Country list div-->
+        <div style="float:left">
+	        <h1 class="header">**ANALOGUE CLOCK**</h1>
+		    <div class="wrapper">
+			<div class="clock-div">
+				<div class="clock">
+                    <div class="clear">
+                        <canvas id="clockCanvas" width="300" height="300"style="border:1px hidden #215608 ;opacity:0.8">THIS BROWSER DOES NOT SUPPORT THE HTML5 CANAVAS</canvas>
+                    </div>
+				</div>
+				<div class="clear"></div>
+				<div  class="time-zone-opts">
+					<label for="Time-Zone">Time-Zone:</label>
+					<select name="zones" id="timeZones">
+                        <option value="0" id="wat">WAT - West African Time</option>
+						<option value="1" id="cet">CET - Central European Time</option>
+						<option value="2" id="cst">CST - Central Standard Time</option>
+						<option value="3" id="eat">East Afircan Time</option>
+						<option value="4" id="edt">Eastern Daylight Time</option>
+                        <option value="5" id="fijiTime">Fiji Time</option>
+						<option value="6" id="gmt">GMT - Greenwich Mean Time</option>
+						<option value="7" id="norfolkTime">Norfolk Time</option>
+						<option value="8" id="nepalTime">Nepal Time</option>
+						<option value="9" id="pyongyangTime">Pyongyang Time</option>
+                        <option value="9" id="westSamoa">West Samoa Time</option>
+                        <option value="9" id="WAST">WAST - West Africa Summer Time</option>
+					</select>
+				</div>
+				<button class="btn" id="btnChange" onclick="check()">Change Time Zone</button>
+				<button class="btn" id="btnReverse"onclick="refresh()"><a href="index.html"><i class="fa fa-clock-o" aria-hidden="true"></i></a></button>
+                <div class="clear"></div>
+                <div>
+			        <table id ="outputTab">
+                        <tr>
+                            <th class="ct">Zones   <i class="fa fa-arrows-h" aria-hidden="true"></i></th>
+                            <th><i class="fa fa-arrows-h" aria-hidden="true"></i></th>
+                            <th id="zone">utc</th>
+                        </tr>
+			             
+
+			            <tr>
+                           
+                            <th></th>
+                            <th ><b class="ct">Timezone</b></th>
+                            <th></th>
+                            <td></td>
+                            <th>Local Zone</th>
+                            
+
+			            </tr>
+                        <tr>
+                           
+                            <th></th>
+                            <th ><i class="fa fa-arrows-v" aria-hidden="true"></i></th>
+                            <th></th>
+                            <td></td>
+                            <th><i class="fa fa-arrows-v" aria-hidden="true"></i></th>
+                            
+
+			            </tr>
+			            <tr>
+                            <td><b>Current Time  <i class="fa fa-arrows-h" aria-hidden="true"></i></b></td>
+                            <td class="ct" id="zoneTime">3</td>
+                            <td></td>
+                            <td></td>
+                            <td class="ct" id="curTime">2</td>
+			            </tr>
+                        <tr><td><b>Date  <i class="fa fa-arrows-h" aria-hidden="true"></i></b></td>
+                            <td class="ct" id="zoneDate">11/11/17</td>
+                            <td></td>
+                            <td></td>
+                            <td class="ct" id="curDate">12/11/17</td>
+
+                        </tr>
+				        <tr>
+                            <td><b>Offset <i class="fa fa-arrows-h" aria-hidden="true"></i></b>
+                            </td><td class="ct" id ="offset">-5 hours</td>
+				        </tr>
+			        </table>
+		        </div>
+
+			</div>
+		</div><!--canvas div-->
+            <div></div><!--color picker div-->
+        </div>
+        <div style="float:left;width:600px; margin:7.5px">
+            <h1 style="text-align:center">CITIES IN DIFFERENT ZONES</h1>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                    <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC+0</b></i>
+                        <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       ABIDJAN</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       ACCRA</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       CARDIFF</li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC+1</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       ABUJA</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       ALGIERS</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       PARIS</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC+2</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       MINSK</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       ATHENS</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       KIGALI</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC+3</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       RIYAHD</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       BAGHDAD</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       MOGADISHU</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC+4</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       DOHA</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       QUATAR</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       ABU DHABI</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC+5</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       KARACHI</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       NEW DELHI</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       ISLAMABAD</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC+6</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       ASTANA</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       OMSK</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       KOLKATA</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC+7</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       SINGAPORE</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       KUALA LUMPUR</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       BANGKOK</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC+8</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       MANILLA</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       TAIPEI</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       HONG KONG</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC+9</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       TOKYO</li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC+10</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       BRISBANE</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       PORT MORESBY</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       CAIRNS</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC+12</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       AUCKLAND</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       WELLINGTON</li>
+                        <li></li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC-10</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       HONOLULU</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC-9</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       ANCHORAGE</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       WHITEHORSE</li>
+                        <li></li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC-8</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       LOS ANGELES</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       SAN FRANSISCO</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       SEATTLE</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC-7</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       PHOENIX</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       DENVER</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       SALT LAKE CITY</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC-6</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       SAN SALVADOR</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       MEXICO CITY</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       GUATEMALA CITY</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC-5</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       CARACAS</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       BOGOTA</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       LIMA</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC-4</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       SAN JUAN</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       HALIFAX</li>
+                        <li></li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC-3</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       RIO DE JANIERO</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       BUENO AIRES</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       SAO PAULO</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+            <div style="float:left">
+                <ul style="margin:5px 20px 5px 20px;">
+                <li><i class="fa fa-clock-o" aria-hidden="true"><b>   UTC-1</b></i>
+                    <ul>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       NOUAKCHOTT</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       FREETOWN</li>
+                        <li><i class="fa fa-flag" aria-hidden="true"></i>       CONAKRY</li>
+                    </ul>
+                </li>
+            </ul>
+            </div>
+        </div>	    
+        <script type="text/javascript"src="index.js"></script>
+        <footer></footer>
+     </div>
+</body>
+</html>
