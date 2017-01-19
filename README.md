@@ -8,8 +8,7 @@
     * User can view times in different time-zones and see the difference betwwen their local time zone and any other selected time-zone.
 
 ## Dependencies
- - [Jasmine](https://jasmine.github.io) - Jasmine® is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests. It was the preffered testing framework used for the javacript code in this app.
- - [Firebase database Node.js module](firebase.google.com/docs/database/web/start) - The Firebase Realtime Database is a cloud-hosted database. Data is stored as JSON and synchronized in realtime to every connected client
+ - None
 
 ### Installation and setup
 1. Go to https://henshawrowland56.github.io/bc-18-AnalogueClock/ or Clone the git repo into a folder in your local system using "git clone https://henshawrowland56.github.io/bc-18-AnalogueClock/".
